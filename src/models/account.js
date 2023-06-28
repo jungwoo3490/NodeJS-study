@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+function hash(password) {
+    return crypto.createHmac('sha256', secret).update(password).digest('hex');
+}
+
 const Account = new Schema({
     profile: {
         username: String,
